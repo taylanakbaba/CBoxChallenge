@@ -79,6 +79,7 @@ function updateFilter() {
   const selectedValues = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
   filter = selectedValues.join(',');
   renderElements(getFilteredData());
+  console.log(updateFilter);
 }
 
 function getFilteredData() {
