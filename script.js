@@ -69,27 +69,39 @@ const renderElements = (data) => {
 
 const checkboxes = document.querySelectorAll('.checkbox');
 checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('click', updateFilter);
+    checkbox.addEventListener('click', updateFilter);
 });
 
 let filter = '';
 
 function updateFilter() {
-  const selectedCheckboxes = document.querySelectorAll('.checkbox:checked');
-  const selectedValues = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
-  filter = selectedValues.join(',');
-  renderElements(getFilteredData());
-  console.log(updateFilter);
+    const selectedCheckboxes = document.querySelectorAll('.checkbox:checked');
+    const selectedValues = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+    filter = selectedValues.join(',');
+    renderElements(getFilteredData());
+    console.log(updateFilter);
 }
 
 function getFilteredData() {
-  if (!filter) {
-    return initialData;
-  }
-  return initialData.filter(item => filter.includes(item.type));
+    if (!filter) {
+        return initialData;
+    }
+    return initialData.filter(item => filter.includes(item.type));
 }
 
+const searchInput = document.querySelector("#search")
 
+searchInput.addEventListener("input", (e) => {
+    const value = e.target.value.toLowerCase();
+    let filteredData = [];
+    if (value.length > 0) {
+        filteredData = getFilteredData().filter(item => item.email.toLowerCase().startsWith(value));
+    } else {
+        filteredData = getFilteredData();
+    }
+
+    renderElements(filteredData);
+});
 
 
 

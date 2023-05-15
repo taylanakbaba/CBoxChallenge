@@ -137,14 +137,16 @@ h1 {
     .check-boxes label {
         max-width: 100%;
         font-size: 1.3rem;
-        margin-right: 0;
+        margin-left: 0;
         padding: 0;
 
     }
 
+
+
 }
 
-@media only screen and (max-width : 480px) {
+@media only screen and (min-width : 480px) {
 
     .wallet-items {
         display: grid;
@@ -214,6 +216,28 @@ h1 {
         padding: 14px;
 
     }
-
 }
 
+.email {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+}
+
+.email input, .email textarea {
+    border: none;
+    background-color:#f0f0f0 ;
+    width: 100%;
+}
+
+.email input:focus {
+    outline: 0;
+}
